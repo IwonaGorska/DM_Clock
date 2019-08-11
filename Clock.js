@@ -12,9 +12,7 @@ var showCurrentTime = function()
 {
     // display the string on the webpage
     var clock = document.getElementById('clock');
- 
     var currentTime = new Date();
- 
     var hours = currentTime.getHours();
     var minutes = currentTime.getMinutes();
     var seconds = currentTime.getSeconds();
@@ -45,7 +43,7 @@ var updateClock = function()
   var image = "dm4.jpg";
 
   var timeEventJS = document.getElementById("timeEvent");
-  var lolcatImageJS = document.getElementById('lolcatImage');
+  var dmImageJS = document.getElementById("dmImage");
   
   if (time == partyTime)
   {
@@ -85,7 +83,7 @@ var updateClock = function()
 
   console.log(messageText); 
   timeEventJS.innerText = messageText;
-  lolcatImage.src = image;
+  dmImageJS.src = image;
   
   showCurrentTime();
 };
@@ -93,19 +91,17 @@ updateClock();
 
 // Getting the clock to increment once a second
 var oneSecond = 1000;
-setInterval( updateClock, oneSecond);
-
+setInterval(updateClock, oneSecond);
 
 // Getting the Party Time Button To Work
 var partyButton = document.getElementById("partyTimeButton");
-
 var partyEvent = function()
 {
     if (partyTime < 0) 
     {
         partyTime = new Date().getHours();
         partyTimeButton.innerText = "Party Over!";
-        partyTimeButton.style.backgroundColor = "#888";
+        partyTimeButton.style.backgroundColor = "#666";
     }
     else
     {
@@ -114,39 +110,29 @@ var partyEvent = function()
         partyTimeButton.style.backgroundColor = "#222";
     }
 };
-
 partyButton.addEventListener("click", partyEvent);
 partyEvent(); 
 
-
 // Activates Recording selector
 var recordingTimeSelector =  document.getElementById("recordingTimeSelector");
-
 var recordingEvent = function()
 {
     recordingTime = recordingTimeSelector.value;
 };
-
 recordingTimeSelector.addEventListener("change", recordingEvent);
-
 
 // Activates Concert selector
 var concertTimeSelector =  document.getElementById("concertTimeSelector");
-
 var concertEvent = function()
 {
     concertTime = concertTimeSelector.value;
 };
-
 concertTimeSelector.addEventListener("change", concertEvent);
-
 
 // Activates Nap-Time selector
 var napTimeSelector =  document.getElementById("napTimeSelector");
-
 var napEvent = function()
 {
     napTime = napTimeSelector.value;
 };
-
 napTimeSelector.addEventListener("change", napEvent);
